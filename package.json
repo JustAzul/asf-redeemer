@@ -1,23 +1,21 @@
 {
-  "name": "nestjs-prisma-client-starter",
+  "name": "asf-redeemer",
   "version": "0.0.1",
-  "description": "NestJS Prisma Client Starter Project",
-  "author": "Marc Stammerjohann",
+  "description": "The purpose of this project is to monitor a Reddit page for temporarily free-to-keep games and send a command to ASF (ArchiSteamFarm) to redeem these games.t",
+  "author": "Diego (Azul) Ferreira",
   "license": "MIT",
   "keywords": [
     "nestjs",
     "prisma",
     "prisma client",
-    "typescript",
-    "passport",
-    "graphql"
+    "typescript"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/fivethree-team/nestjs-prisma-client-example.git"
+    "url": "https://github.com/JustAzul/asf-redeemer.git"
   },
   "bugs": {
-    "url": "https://github.com/fivethree-team/nestjs-prisma-client-example/issues"
+    "url": "https://github.com/JustAzul/asf-redeemer/issues"
   },
   "scripts": {
     "build": "nest build",
