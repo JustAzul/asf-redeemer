@@ -2,7 +2,7 @@ import { ApiRepository } from 'src/shared/repositories/interfaces/repository.int
 import { SteamAppEntity } from 'src/steam-app/entities/steam-app.entity';
 
 export abstract class ISteamAppDetailsRepository
-  implements ApiRepository<SteamAppEntity>
+  implements ApiRepository<SteamAppEntity[]>
 {
-  abstract fetchDetails(ids: string[]): Promise<SteamAppEntity>;
+  abstract fetchDetails(ids: string[]): Promise<SteamAppEntity[]>;
 }

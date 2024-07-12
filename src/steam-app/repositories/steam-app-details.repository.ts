@@ -1,16 +1,27 @@
 import axios from 'axios';
 import { SteamAppDetailsResponse } from '../dto/steam-app-details.dto';
 import { ISteamAppDetailsRepository } from './interface/steam-app-details.interface';
+import {
+  ISteamAppApiMapper,
+  SteamAppApiMapper,
+} from './mappers/steam-app-details.mapper';
+import { SteamAppEntity } from '../entities/steam-app.entity';
+import { Injectable } from '@nestjs/common';
 
 const STEAM_API_URL = 'https://store.steampowered.com/api/appdetails';
 
+@Injectable()
 export class SteamAppDetailsRepository implements ISteamAppDetailsRepository {
-  async fetchDetails(appIds: string[]): Promise<SteamAppDetailsResponse> {
+  private readonly mapper: ISteamAppApiMapper = new SteamAppApiMapper();
+
+  async fetchDetails(appIds: string[]): Promise<SteamAppEntity[]> {
     try {
-      const response = await axios.get<SteamAppDetailsResponse>(STEAM_API_URL, {
+      const { data } = await axios.get<SteamAppDetailsResponse>(STEAM_API_URL, {
         params: { appids: appIds.join(',') },
       });
-      return response.data;
+
+      const apps = Object.keys(data).map((key) => data[key]);
+      return apps.map(({ data }) => this.mapper.toEntity(data));
     } catch (error) {
       throw new Error(`Failed to fetch app details: ${error.message}`);
     }

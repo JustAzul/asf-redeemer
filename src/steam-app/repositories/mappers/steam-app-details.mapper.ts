@@ -1,5 +1,5 @@
 import { IMapper } from 'src/shared/repositories/interfaces/mapper.interface';
-import { SteamAppDetailsResponse } from 'src/steam-app/dto/steam-app-details.dto';
+import { AppData } from 'src/steam-app/dto/steam-app-details.dto';
 import {
   SteamAppEntity,
   SteamAppProps,
@@ -7,13 +7,11 @@ import {
 } from 'src/steam-app/entities/steam-app.entity';
 
 export abstract class ISteamAppApiMapper implements IMapper<SteamAppEntity> {
-  abstract toEntity(response: SteamAppDetailsResponse): SteamAppEntity;
+  abstract toEntity(response: AppData): SteamAppEntity;
 }
 
 export class SteamAppApiMapper extends ISteamAppApiMapper {
-  toEntity(response: SteamAppDetailsResponse): SteamAppEntity {
-    const data = response[Object.keys(response)[0]].data;
-
+  toEntity(data: AppData): SteamAppEntity {
     const props: SteamAppProps = {
       app_id: data.steam_appid,
       name: data.name,
@@ -21,10 +19,5 @@ export class SteamAppApiMapper extends ISteamAppApiMapper {
     };
 
     return new SteamAppEntity(props);
-  }
-
-  toManyEntities(response: SteamAppDetailsResponse): SteamAppEntity[] {
-    // return this.toEntity(response);
-    //TODO: Implement this method
   }
 }
