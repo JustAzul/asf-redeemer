@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { SteamPackageDetails } from '../entities/steam-package.entity';
-import { ISteamAppApiMapper } from './mappers/steam-package-details.mapper';
+import { ISteamPackageApiMapper } from './mappers/steam-package-details.mapper';
 import { SteamPackageDetailsResponse } from '../dto/steam-package-details.dto';
 import { ISteamPackageDetailsRepository } from './interface/steam-package-details.interface';
 
@@ -10,7 +10,7 @@ const STEAM_API_URL = 'https://store.steampowered.com/api/packagedetails';
 export class SteamPackageDetailsRepository
   implements ISteamPackageDetailsRepository
 {
-  constructor(private readonly mapper: ISteamAppApiMapper) {}
+  constructor(private readonly mapper: ISteamPackageApiMapper) {}
 
   async fetchDetails(packageIds: string[]): Promise<SteamPackageDetails[]> {
     //TODO: error handling

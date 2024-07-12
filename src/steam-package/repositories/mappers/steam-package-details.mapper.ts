@@ -8,13 +8,13 @@ import {
 
 type toEntityProps = PackageData & { sub_id: number };
 
-export abstract class ISteamAppApiMapper
+export abstract class ISteamPackageApiMapper
   implements IMapper<SteamPackageDetails>
 {
   abstract toEntity(packageData: toEntityProps): SteamPackageDetails;
 }
 
-export class SteamAppApiMapper extends ISteamAppApiMapper {
+export class SteamPackageApiMapper extends ISteamPackageApiMapper {
   toEntity(packageData: toEntityProps): SteamPackageDetails {
     const props: SteamPackageProps = {
       apps: packageData.apps.map((app) => {
