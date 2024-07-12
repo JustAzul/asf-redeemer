@@ -1,5 +1,5 @@
 export interface SteamAppDetailsResponse {
-  [key: string]: AppDetail;
+  [appID: string]: AppDetail;
 }
 
 export interface AppDetail {
