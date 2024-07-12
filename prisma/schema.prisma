@@ -5,37 +5,79 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
-  // previewFeatures = []
 }
 
 generator dbml {
   provider = "prisma-dbml-generator"
 }
 
-model User {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  email     String   @unique
-  password  String
-  firstname String?
-  lastname  String?
-  posts     Post[]
-  role      Role
+model SteamSub {
+  id          Int          @id @default(autoincrement())
+  sub_id      Int          @unique
+  name        String
+  apps        SteamApp[]
+  sub_history SubHistory[]
+  created_at  DateTime     @default(now())
+
+  @@map("steam_package")
 }
 
-model Post {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  published Boolean
-  title     String
-  content   String?
-  author    User?    @relation(fields: [authorId], references: [id])
-  authorId  String?
+model SteamApp {
+  id             Int             @id @default(autoincrement())
+  app_id         Int             @unique
+  name           String
+  app_history    AppHistory[]
+  game_ownership GameOwnership[]
+  steam_packages SteamSub[]
+  type           SteamAppType
+  created_at     DateTime        @default(now())
+
+  @@map("steam_app")
 }
 
-enum Role {
-  ADMIN
-  USER
+model AsfAccount {
+  id             Int             @id @default(autoincrement())
+  username       String          @unique
+  game_ownership GameOwnership[]
+  created_at     DateTime        @default(now())
+
+  @@map("asf_account")
+}
+
+model GameOwnership {
+  id             Int        @id @default(autoincrement())
+  steam_app_id   Int
+  app            SteamApp   @relation(fields: [steam_app_id], references: [id])
+  asf_account    AsfAccount @relation(fields: [asf_account_id], references: [id])
+  asf_account_id Int
+  created_at     DateTime   @default(now())
+
+  @@map("game_ownership")
+}
+
+model AppHistory {
+  id           Int      @id @default(autoincrement())
+  steam_app_id Int
+  app          SteamApp @relation(fields: [steam_app_id], references: [id])
+  url          String
+  created_at   DateTime @default(now())
+
+  @@map("app_history")
+}
+
+model SubHistory {
+  id           Int      @id @default(autoincrement())
+  steam_sub_id Int
+  sub          SteamSub @relation(fields: [steam_sub_id], references: [id])
+  url          String
+  created_at   DateTime @default(now())
+
+  @@map("sub_history")
+}
+
+enum SteamAppType {
+  DLC
+  GAME
+
+  @@map("steam_app_type")
 }
