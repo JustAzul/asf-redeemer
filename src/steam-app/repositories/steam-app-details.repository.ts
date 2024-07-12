@@ -14,15 +14,12 @@ export class SteamAppDetailsRepository implements ISteamAppDetailsRepository {
   constructor(private readonly mapper: ISteamAppApiMapper) {}
 
   async fetchDetails(appIds: string[]): Promise<SteamApp[]> {
-    try {
-      const { data } = await axios.get<SteamAppDetailsResponse>(STEAM_API_URL, {
-        params: { appids: appIds.join(',') },
-      });
+    //TODO: error handling
+    const { data } = await axios.get<SteamAppDetailsResponse>(STEAM_API_URL, {
+      params: { appids: appIds.join(',') },
+    });
 
-      const apps = Object.keys(data).map((key) => data[key]);
-      return apps.map(({ data }) => this.mapper.toEntity(data));
-    } catch (error) {
-      throw new Error(`Failed to fetch app details: ${error.message}`);
-    }
+    const apps = Object.keys(data).map((key) => data[key]);
+    return apps.map(({ data }) => this.mapper.toEntity(data));
   }
 }
