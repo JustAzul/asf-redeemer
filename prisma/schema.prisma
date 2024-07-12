@@ -45,12 +45,13 @@ model AsfAccount {
 }
 
 model GameOwnership {
-  id             Int        @id @default(autoincrement())
-  steam_app_id   Int
-  app            SteamApp   @relation(fields: [steam_app_id], references: [id])
-  asf_account    AsfAccount @relation(fields: [asf_account_id], references: [id])
-  asf_account_id Int
-  created_at     DateTime   @default(now())
+  id               Int        @id @default(autoincrement())
+  ownership_status Boolean
+  steam_app_id     Int
+  app              SteamApp   @relation(fields: [steam_app_id], references: [id])
+  asf_account      AsfAccount @relation(fields: [asf_account_id], references: [id])
+  asf_account_id   Int
+  created_at       DateTime   @default(now())
 
   @@map("game_ownership")
 }
