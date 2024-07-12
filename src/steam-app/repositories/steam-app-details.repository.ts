@@ -1,10 +1,7 @@
 import axios from 'axios';
 import { SteamAppDetailsResponse } from '../dto/steam-app-details.dto';
 import { ISteamAppDetailsRepository } from './interface/steam-app-details.interface';
-import {
-  ISteamAppApiMapper,
-  SteamAppApiMapper,
-} from './mappers/steam-app-details.mapper';
+import { ISteamAppApiMapper } from './mappers/steam-app-details.mapper';
 import { SteamAppEntity } from '../entities/steam-app.entity';
 import { Injectable } from '@nestjs/common';
 
@@ -12,7 +9,7 @@ const STEAM_API_URL = 'https://store.steampowered.com/api/appdetails';
 
 @Injectable()
 export class SteamAppDetailsRepository implements ISteamAppDetailsRepository {
-  private readonly mapper: ISteamAppApiMapper = new SteamAppApiMapper();
+  constructor(private readonly mapper: ISteamAppApiMapper) {}
 
   async fetchDetails(appIds: string[]): Promise<SteamAppEntity[]> {
     try {
