@@ -1,7 +1,7 @@
 {
   "name": "asf-redeemer",
   "version": "0.0.1",
-  "description": "The purpose of this project is to monitor a Reddit page for temporarily free-to-keep games and send a command to ASF (ArchiSteamFarm) to redeem these games.t",
+  "description": "The purpose of this project is to monitor a Reddit page for temporarily free-to-keep games and send a command to ASF (ArchiSteamFarm) to redeem these games.",
   "author": "Diego (Azul) Ferreira",
   "license": "MIT",
   "keywords": [
