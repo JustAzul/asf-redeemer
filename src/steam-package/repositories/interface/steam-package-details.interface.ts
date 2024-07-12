@@ -1,5 +1,5 @@
-import { SteamPackageDetailsResponse } from 'src/steam-package/dto/steam-package-details.dto';
+import { SteamPackageDetails } from 'src/steam-package/entities/steam-package.entity';
 
 export abstract class ISteamPackageDetailsRepository {
-  abstract fetchDetails(ids: string[]): Promise<SteamPackageDetailsResponse>;
+  abstract fetchDetails(packageIds: string[]): Promise<SteamPackageDetails[]>;
 }

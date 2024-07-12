@@ -1,19 +1,25 @@
 import axios from 'axios';
-import { SteamAppDetailsResponse } from 'src/steam-app/dto/steam-app-details.dto';
 
-import { IApiRepository } from '../../shared/repositories/interfaces/repository.interface';
+import { SteamPackageDetails } from '../entities/steam-package.entity';
+import { ISteamAppApiMapper } from './mappers/steam-package-details.mapper';
+import { SteamPackageDetailsResponse } from '../dto/steam-package-details.dto';
+import { ISteamPackageDetailsRepository } from './interface/steam-package-details.interface';
 
-const STEAM_API_URL = 'https://store.steampowered.com/api/appdetails';
+const STEAM_API_URL = 'https://store.steampowered.com/api/packagedetails';
 
-export class SteamAppDetailsRepository extends IApiRepository<SteamAppDetailsResponse> {
-  async fetchDetails(appIds: string[]): Promise<SteamAppDetailsResponse> {
-    try {
-      const response = await axios.get<SteamAppDetailsResponse>(STEAM_API_URL, {
-        params: { appids: appIds.join(',') },
-      });
-      return response.data;
-    } catch (error) {
-      throw new Error(`Failed to fetch app details: ${error.message}`);
-    }
+export class SteamPackageDetailsRepository
+  implements ISteamPackageDetailsRepository
+{
+  constructor(private readonly mapper: ISteamAppApiMapper) {}
+
+  async fetchDetails(packageIds: string[]): Promise<SteamPackageDetails[]> {
+    //TODO: error handling
+    const { data } = await axios.get<SteamPackageDetailsResponse>(
+      `${STEAM_API_URL}?packageids=${packageIds.join(',')}`,
+    );
+
+    return Object.entries(data).map(([appId, { data }]) =>
+      this.mapper.toEntity({ ...data, sub_id: Number(appId) }),
+    );
   }
 }
