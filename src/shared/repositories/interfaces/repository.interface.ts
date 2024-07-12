@@ -1,3 +1,3 @@
-export abstract class ApiRepository<T> {
+export abstract class IApiRepository<T> {
   abstract fetchDetails(ids: string[]): Promise<T>;
 }

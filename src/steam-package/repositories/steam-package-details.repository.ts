@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { ApiRepository } from '../../shared/repositories/interfaces/repository.interface';
+import { IApiRepository } from '../../shared/repositories/interfaces/repository.interface';
 import { SteamAppDetailsResponse } from 'src/steam-app/dto/steam-app-details.dto';
 
 const STEAM_API_URL = 'https://store.steampowered.com/api/appdetails';
 
-export class SteamAppDetailsRepository extends ApiRepository<SteamAppDetailsResponse> {
+export class SteamAppDetailsRepository extends IApiRepository<SteamAppDetailsResponse> {
   async fetchDetails(appIds: string[]): Promise<SteamAppDetailsResponse> {
     try {
       const response = await axios.get<SteamAppDetailsResponse>(STEAM_API_URL, {
