@@ -1,0 +1,72 @@
+{
+  "32848": {
+    "success": true,
+    "data": {
+      "name": "Borderlands 2 Game of the Year",
+      "page_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/subs/32848/header.jpg?t=1447451967",
+      "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/subs/32848/header_ratio.jpg?t=1447451967",
+      "small_logo": "https://shared.akamai.steamstatic.com/store_item_assets/steam/subs/32848/capsule_231x87.jpg?t=1447451967",
+      "apps": [
+        {
+          "id": 49520,
+          "name": "Borderlands 2"
+        },
+        {
+          "id": 207870,
+          "name": "Borderlands 2 - Captain Scarlett and her Pirate's Booty"
+        },
+        {
+          "id": 230090,
+          "name": "Borderlands 2 - Psycho Pack"
+        },
+        {
+          "id": 213780,
+          "name": "Borderlands 2: Collector's Edition Pack"
+        },
+        {
+          "id": 208690,
+          "name": "Borderlands 2: Creature Slaughterdome"
+        },
+        {
+          "id": 213230,
+          "name": "Borderlands 2: Mechromancer Pack"
+        },
+        {
+          "id": 213210,
+          "name": "Borderlands 2: Mr. Torgue’s Campaign of Carnage"
+        },
+        {
+          "id": 213250,
+          "name": "Borderlands 2: Sir Hammerlock’s Big Game Hunt"
+        },
+        {
+          "id": 218550,
+          "name": "Borderlands 2: Tiny Tina's Assault on Dragon Keep"
+        },
+        {
+          "id": 224200,
+          "name": "Borderlands 2: Ultimate Vault Hunters Upgrade Pack"
+        }
+      ],
+      "price": {
+        "currency": "BRL",
+        "initial": 9999,
+        "final": 1999,
+        "discount_percent": 80,
+        "individual": 15890
+      },
+      "platforms": {
+        "windows": true,
+        "mac": true,
+        "linux": true
+      },
+      "controller": {
+        "full_gamepad": true
+      },
+      "release_date": {
+        "coming_soon": false,
+        "date": ""
+      }
+    }
+  }
+}
