@@ -6,17 +6,18 @@ import {
   SteamAppApiMapper,
 } from './repositories/mappers/steam-app-details.mapper';
 
+const ISteamAppDetailsRepositoryProvider: Provider = {
+  provide: ISteamAppDetailsRepository,
+  useClass: SteamAppDetailsRepository,
+};
+
 const SteamAppProviders: Provider[] = [
-  {
-    provide: ISteamAppDetailsRepository,
-    useClass: SteamAppDetailsRepository,
-  },
+  ISteamAppDetailsRepositoryProvider,
   { provide: ISteamAppApiMapper, useClass: SteamAppApiMapper },
 ];
 
 @Module({
-  imports: [],
   providers: SteamAppProviders,
-  exports: SteamAppProviders,
+  exports: [ISteamAppDetailsRepositoryProvider],
 })
 export class SteamAppModule {}
