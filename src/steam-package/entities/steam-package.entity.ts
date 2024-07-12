@@ -1,7 +1,7 @@
 export interface SteamPackageProps {
-  sub_id: number;
-  name: string;
   apps: PackageApp[];
+  name: string;
+  sub_id: number;
 }
 
 export class SteamPackageDetailsEntity {

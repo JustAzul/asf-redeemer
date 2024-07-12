@@ -1,6 +1,7 @@
 import axios from 'axios';
-import { IApiRepository } from '../../shared/repositories/interfaces/repository.interface';
 import { SteamAppDetailsResponse } from 'src/steam-app/dto/steam-app-details.dto';
+
+import { IApiRepository } from '../../shared/repositories/interfaces/repository.interface';
 
 const STEAM_API_URL = 'https://store.steampowered.com/api/appdetails';
 

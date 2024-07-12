@@ -1,10 +1,12 @@
 import { Logger, Module } from '@nestjs/common';
 import { PrismaModule, loggingMiddleware } from 'nestjs-prisma';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { SteamAppModule } from './steam-app/steam-app.module';
 
 @Module({
+  controllers: [AppController],
   imports: [
     PrismaModule.forRoot({
       isGlobal: true,
@@ -20,7 +22,6 @@ import { SteamAppModule } from './steam-app/steam-app.module';
     }),
     SteamAppModule,
   ],
-  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

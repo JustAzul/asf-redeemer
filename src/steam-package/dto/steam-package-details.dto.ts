@@ -3,20 +3,20 @@ export interface SteamPackageDetailsResponse {
 }
 
 export interface PackageDetail {
-  success: boolean;
   data: PackageData;
+  success: boolean;
 }
 
 export interface PackageData {
+  apps: PackageApp[];
+  controller: PackageController;
+  header_image: string;
   name: string;
   page_image: string;
-  header_image: string;
-  small_logo: string;
-  apps: PackageApp[];
-  price: PackagePrice;
   platforms: PackagePlatforms;
-  controller: PackageController;
+  price: PackagePrice;
   release_date: ReleaseDate;
+  small_logo: string;
 }
 
 export interface PackageApp {
@@ -26,16 +26,16 @@ export interface PackageApp {
 
 export interface PackagePrice {
   currency: string;
-  initial: number;
-  final: number;
   discount_percent: number;
+  final: number;
   individual: number;
+  initial: number;
 }
 
 export interface PackagePlatforms {
-  windows: boolean;
-  mac: boolean;
   linux: boolean;
+  mac: boolean;
+  windows: boolean;
 }
 
 export interface PackageController {

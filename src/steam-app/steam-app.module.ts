@@ -1,10 +1,11 @@
 import { Module, Provider } from '@nestjs/common';
+
 import { ISteamAppDetailsRepository } from './repositories/interface/steam-app-details.interface';
-import { SteamAppDetailsRepository } from './repositories/steam-app-details.repository';
 import {
   ISteamAppApiMapper,
   SteamAppApiMapper,
 } from './repositories/mappers/steam-app-details.mapper';
+import { SteamAppDetailsRepository } from './repositories/steam-app-details.repository';
 
 const ISteamAppDetailsRepositoryProvider: Provider = {
   provide: ISteamAppDetailsRepository,
@@ -17,7 +18,7 @@ const SteamAppProviders: Provider[] = [
 ];
 
 @Module({
-  providers: SteamAppProviders,
   exports: [ISteamAppDetailsRepositoryProvider],
+  providers: SteamAppProviders,
 })
 export class SteamAppModule {}

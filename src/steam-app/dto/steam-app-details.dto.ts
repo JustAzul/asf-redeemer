@@ -3,51 +3,51 @@ export interface SteamAppDetailsResponse {
 }
 
 export interface AppDetail {
-  success: boolean;
   data: AppData;
+  success: boolean;
 }
 
 export interface AppData {
-  type: string;
-  name: string;
-  steam_appid: number;
-  required_age: number;
-  is_free: boolean;
-  detailed_description: string;
   about_the_game: string;
-  supported_languages: string;
-  header_image: string;
-  website: string;
-  developers: string[];
-  publishers: string[];
-  price_overview?: PriceOverview;
-  platforms: AppPlatforms;
   categories: Category[];
+  detailed_description: string;
+  developers: string[];
   genres: Genre[];
+  header_image: string;
+  is_free: boolean;
+  name: string;
+  platforms: AppPlatforms;
+  price_overview?: PriceOverview;
+  publishers: string[];
   release_date: ReleaseDate;
+  website: string;
+  steam_appid: number;
+  supported_languages: string;
+  type: string;
+  required_age: number;
 }
 
 export interface PriceOverview {
   currency: string;
-  initial: number;
-  final: number;
   discount_percent: number;
+  final: number;
+  initial: number;
 }
 
 export interface AppPlatforms {
-  windows: boolean;
-  mac: boolean;
   linux: boolean;
+  mac: boolean;
+  windows: boolean;
 }
 
 export interface Category {
-  id: number;
   description: string;
+  id: number;
 }
 
 export interface Genre {
-  id: string;
   description: string;
+  id: string;
 }
 
 export interface ReleaseDate {
