@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 
 import { SteamPackageDetailsResponse } from '../dto/steam-package-details.dto';
@@ -5,7 +6,6 @@ import { SteamPackageDetails } from '../entities/steam-package.entity';
 
 import { ISteamPackageDetailsRepository } from './interface/steam-package-details.interface';
 import { ISteamPackageApiMapper } from './mappers/steam-package-details.mapper';
-import { Injectable } from '@nestjs/common';
 
 const STEAM_API_URL = 'https://store.steampowered.com/api/packagedetails';
 
