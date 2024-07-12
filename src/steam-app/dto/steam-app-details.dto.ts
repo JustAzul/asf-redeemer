@@ -20,11 +20,11 @@ export interface AppData {
   price_overview?: PriceOverview;
   publishers: string[];
   release_date: ReleaseDate;
-  website: string;
+  required_age: number;
   steam_appid: number;
   supported_languages: string;
   type: string;
-  required_age: number;
+  website: string;
 }
 
 export interface PriceOverview {

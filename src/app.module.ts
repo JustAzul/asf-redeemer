@@ -4,6 +4,7 @@ import { PrismaModule, loggingMiddleware } from 'nestjs-prisma';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { SteamAppModule } from './steam-app/steam-app.module';
+import { SteamPackageModule } from './steam-package/steam-package.module';
 
 @Module({
   controllers: [AppController],
@@ -21,6 +22,7 @@ import { SteamAppModule } from './steam-app/steam-app.module';
       },
     }),
     SteamAppModule,
+    SteamPackageModule,
   ],
   providers: [AppService],
 })

@@ -1,4 +1,5 @@
 import { Module, Provider } from '@nestjs/common';
+
 import { ISteamPackageDetailsRepository } from './repositories/interface/steam-package-details.interface';
 import {
   ISteamPackageApiMapper,

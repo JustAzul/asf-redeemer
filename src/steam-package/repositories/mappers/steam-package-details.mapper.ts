@@ -1,5 +1,4 @@
 import { IMapper } from 'src/shared/repositories/interfaces/mapper.interface';
-
 import { PackageData } from 'src/steam-package/dto/steam-package-details.dto';
 import {
   SteamPackageDetails,
