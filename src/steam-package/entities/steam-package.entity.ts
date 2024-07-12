@@ -1,10 +1,15 @@
+export interface PackageApp {
+  id: number;
+  name: string;
+}
+
 export interface SteamPackageProps {
   apps: PackageApp[];
   name: string;
   sub_id: number;
 }
 
-export class SteamPackageDetailsEntity {
+export class SteamPackageDetails {
   constructor(private readonly props: SteamPackageProps) {}
 
   get sub_id(): number {
@@ -18,9 +23,4 @@ export class SteamPackageDetailsEntity {
   get apps(): PackageApp[] {
     return this.props.apps;
   }
-}
-
-export interface PackageApp {
-  id: number;
-  name: string;
 }
