@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 
 import { SteamAppDetailsResponse } from '../dto/steam-app-details.dto';
-import { SteamAppEntity } from '../entities/steam-app.entity';
+import { SteamApp } from '../entities/steam-app.entity';
 
 import { ISteamAppDetailsRepository } from './interface/steam-app-details.interface';
 import { ISteamAppApiMapper } from './mappers/steam-app-details.mapper';
@@ -13,7 +13,7 @@ const STEAM_API_URL = 'https://store.steampowered.com/api/appdetails';
 export class SteamAppDetailsRepository implements ISteamAppDetailsRepository {
   constructor(private readonly mapper: ISteamAppApiMapper) {}
 
-  async fetchDetails(appIds: string[]): Promise<SteamAppEntity[]> {
+  async fetchDetails(appIds: string[]): Promise<SteamApp[]> {
     try {
       const { data } = await axios.get<SteamAppDetailsResponse>(STEAM_API_URL, {
         params: { appids: appIds.join(',') },

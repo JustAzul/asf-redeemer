@@ -9,7 +9,7 @@ export interface SteamAppProps {
   type: SteamAppType;
 }
 
-export class SteamAppEntity {
+export class SteamApp {
   constructor(private readonly props: SteamAppProps) {}
 
   get app_id(): number {
