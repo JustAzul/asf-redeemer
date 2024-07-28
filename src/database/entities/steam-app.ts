@@ -1,5 +1,5 @@
 import { SteamAppType } from 'src/steam-app/entities/steam-app.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn, Relation } from 'typeorm';
 import { AppHistory } from './app-history';
 import { SteamSub } from './steam-sub';
 
@@ -15,10 +15,10 @@ export class SteamApp {
   name!: string;
 
   @OneToMany(() => AppHistory, (appHistory) => appHistory.app)
-  appHistory!: AppHistory[];
+  appHistory!: Relation<AppHistory>[];
 
   @OneToMany(() => SteamSub, (steamSub) => steamSub.apps)
-  steamPackages!: SteamSub[];
+  steamPackages!: Relation<SteamSub>[];
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at!: Date;

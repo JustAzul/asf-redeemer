@@ -4,6 +4,7 @@ import {
   JoinColumn,
   OneToMany,
   PrimaryGeneratedColumn,
+  Relation,
 } from 'typeorm';
 import { SteamApp } from './steam-app';
 import { SubHistory } from './sub-history';
@@ -18,10 +19,10 @@ export class SteamSub {
 
   @OneToMany(() => SteamApp, (steamApp) => steamApp.steamPackages)
   @JoinColumn({ name: 'steam_app_id' })
-  apps!: SteamApp[];
+  apps!: Relation<SteamApp>[];
 
   @OneToMany(() => SubHistory, (subHistory) => subHistory.steamSub)
-  subHistory!: SubHistory[];
+  subHistory!: Relation<SubHistory>[];
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at!: Date;

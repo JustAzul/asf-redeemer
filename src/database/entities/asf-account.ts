@@ -1,4 +1,4 @@
-import { PrimaryGeneratedColumn, Column, Entity, OneToMany } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, Entity, OneToMany, Relation } from 'typeorm';
 import { GameOwnership } from './game-ownership';
 
 @Entity('asf_account')
@@ -10,7 +10,7 @@ export class AsfAccount {
   username!: string;
 
   @OneToMany(() => GameOwnership, (gameOwnership) => gameOwnership.asfAccount)
-  gameOwnership!: GameOwnership[];
+  gameOwnership!: Relation<GameOwnership>[];
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt!: Date;

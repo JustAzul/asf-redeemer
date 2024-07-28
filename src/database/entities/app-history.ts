@@ -4,6 +4,7 @@ import {
   JoinColumn,
   OneToOne,
   Entity,
+  Relation,
 } from 'typeorm';
 import { SteamApp } from './steam-app';
 
@@ -14,7 +15,7 @@ export class AppHistory {
 
   @OneToOne(() => SteamApp, (app) => app.appHistory)
   @JoinColumn({ name: 'steam_app_id' })
-  app!: SteamApp;
+  app!: Relation<SteamApp>;
 
   @Column()
   url!: string;

@@ -4,6 +4,7 @@ import {
   Column,
   JoinColumn,
   Entity,
+  Relation,
 } from 'typeorm';
 import { SteamSub } from './steam-sub';
 
@@ -14,7 +15,7 @@ export class SubHistory {
 
   @OneToOne(() => SteamSub, (steamSub) => steamSub.subHistory)
   @JoinColumn({ name: 'steam_sub_id' })
-  steamSub!: SteamSub;
+  steamSub!: Relation<SteamSub>;
 
   @Column()
   url!: string;
